@@ -25,21 +25,24 @@
             />
           </a>
         </div>
-        <div class="search">
-        <select name="" id="">
-          <option value="">All</option>
-          <option value="">Electronics</option>
-          <option value="">Men's Cloths</option>
-          <option value="">Women's Cloths</option>
-          <option value="">Jewelry</option>
-          <option value="">Cars</option>
-          <option value="">Kitchen Products</option>
-          <option value="">Beauty Products</option>
-          <option value="">Toy Items</option>
-        </select>
-        <input type="text" placeholder="search product" />
-        <img src="../Resources/icons-and-logo/searchIcon.png" alt="">
-      </div>
+        <!-- <div class="search">
+          <select name="" id="">
+            <option value="">All</option>
+            <option value="">Electronics</option>
+            <option value="">Men's Cloths</option>
+            <option value="">Women's Cloths</option>
+            <option value="">Jewelry</option>
+            <option value="">Cars</option>
+            <option value="">Kitchen Products</option>
+            <option value="">Beauty Products</option>
+            <option value="">Toy Items</option>
+          </select>
+          <input type="text" placeholder="search product" />
+          <img src="../Resources/icons-and-logo/searchIcon.png" alt="">
+        </div> -->
+
+
+
         <div class="order_container">
           <div class="delivery">
             <span>
@@ -56,6 +59,13 @@
           </div>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- Show logout link if user is logged in -->
+                    <?php if (isAdmin()): ?>
+                        <a href="../admin/dashboard.php">
+                            <div>
+                                <h4>Admin</h4>
+                            </div>
+                        </a>
+                    <?php endif; ?>
                     <a href="../pages/logout.php">
                         <div>
                             <h4>Logout</h4>

@@ -1,45 +1,48 @@
 <?php
     // index.php
     
-// Ensure session is started correctly
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Include config.php using require_once to ensure it's only included once
-if (file_exists('./includes/config.php')) {
-    require_once('./includes/config.php');
-} else {
-    die('Config file not found!');
-}
-
-// Check if function is already declared before defining it
-// if (!function_exists('isLoggedIn')) {
-    function isLoggedIn() {
-    return isset($_SESSION['user_id']);
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
-// }
 
+    if (file_exists('./includes/config.php')) {
+        require_once('./includes/config.php');
+    } else {
+        die('Config file not found!');
+    }
 
+    function isLoggedIn() {
+        return isset($_SESSION['user_id']);
+    }
 
-// Get current user ID
-// if(!function_exists('getUserId')){
     function getUserId() {
         return $_SESSION['user_id'] ?? null;
-}
-// }
+    }
 
-  // Get cart count
-  $cart_count = 0;
-  if (isLoggedIn()) {
-      $user_id = getUserId();
-      $sql = "SELECT SUM(quantity) AS total FROM cart WHERE user_id = ?";
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param("i", $user_id);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $cart_count = $result->fetch_assoc()['total'] ?? 0;
-  }
+    function isAdmin() {
+        return isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
+    }
+
+    function redirectIfNotAdmin() {
+        if (!isAdmin()) {
+            header("Location: ../index.php");
+            exit();
+        }
+    }
+
+    // Get cart count
+    $cart_count = 0;
+    if (isLoggedIn()) {
+        $user_id = getUserId();
+        $sql = "SELECT SUM(quantity) AS total FROM cart WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cart_count = $result->fetch_assoc()['total'] ?? 0;
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -68,19 +71,22 @@ if (file_exists('./includes/config.php')) {
                 </a>
             </div>
             <div class="search">
-                <select name="" id="">
-                    <option value="">All</option>
-                    <option value="">Electronics</option>
-                    <option value="">Men's Cloths</option>
-                    <option value="">Women's Cloths</option>
-                    <option value="">Jewelry</option>
-                    <option value="">Cars</option>
-                    <option value="">Kitchen Products</option>
-                    <option value="">Beauty Products</option>
-                    <option value="">Toy Items</option>
-                </select>
-                <input type="text" placeholder="search product" />
-                <img src="./Resources/icons-and-logo/searchIcon.png" alt="search icon">
+                <form id="searchForm" action="./pages/searchResults.php" method="GET">
+                    <select name="category" id="categorySelect" onchange="redirectToCategory()">
+                        <option value="0">All</option>
+                        <?php
+                        // Fetch categories from database
+                        $sql = "SELECT id, name FROM categories";
+                        $result = $conn->query($sql);
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='{$row['id']}' data-category-id='{$row['id']}'>{$row['name']}</option>";
+                        }
+                        ?>
+                    </select>
+                    <!-- <input type="hidden" id="selectedCategoryId" name="category_id" value=""> -->
+                    <input type="text" name="query" placeholder="Search products..." />
+                    <button type="submit"><img src="./Resources/icons-and-logo/searchIcon.png" alt="search icon"></button>
+                </form>
             </div>
             <div class="order_container">
                 <div class="delivery">
@@ -94,6 +100,13 @@ if (file_exists('./includes/config.php')) {
                 </div>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- Show logout link if user is logged in -->
+                    <?php if (isAdmin()): ?>
+                        <a href="./admin/dashboard.php">
+                            <div>
+                                <h4>Admin</h4>
+                            </div>
+                        </a>
+                    <?php endif; ?>
                     <a href="./pages/logout.php">
                         <div>
                             <h4>Logout</h4>
@@ -134,16 +147,13 @@ if (file_exists('./includes/config.php')) {
     </header>
 <!-- Header section ends -->
 
-
     <!-- first main section(image slider) starts -->
     <section>
       <div class="header_image_slider">
         <div class="image_slider">
-
           <div class="slider_control_left">
             <img src="./Resources/icons-and-logo/Arrows-Left-Round-icon.png" alt="">
           </div>
-
           <div class="slider_control_right">
             <img src="./Resources/icons-and-logo/Arrows-right-Round-icon.png" alt="">
           </div>
@@ -300,52 +310,58 @@ if (file_exists('./includes/config.php')) {
 
     <!-- third main-section(products) starts -->
     <section>
-      <div class="products_container list"></div>
+      <div class="products_container list">
+      </div>
     </section>
     <!-- third main-section(products) ends -->
 
     <!-- fourth main-section(product slider) starts -->
     <section>
-      <div class="product_slider">
-        <h2>Movies To Watch</h2>
-        <a href="./pages/movies.php">
-          <div class="products">
-            <img src="./Resources/images/1book-24.jpg" alt="books" />
-            <img src="./Resources/images/1movie-teriffier.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-2.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-4.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-5.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-6.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-7.jpg " alt="movie" />
-            <img src="./Resources/images/1movie-8.jpg " alt="movie" />
-            <img src="./Resources/images/1movie-9.jpg " alt="movie" />
-            <img src="./Resources/images/1movie-10 (2).jpg" alt="movie" />
-            <img src="./Resources/images/1movie-15.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-16.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-14.jpg" alt="movie" />
-            <img src="./Resources/images/1movie-17.jpg" alt="movie" />
-          </div>
-        </a>
+      <div class="product_slider_wrapper">
+        <div class="product_slider">
+          <h2>Movies To Watch</h2><br>
+          <a href="./pages/movies.php">
+            <div class="products">
+              <img src="./Resources/images/1book-24.jpg" alt="books" />
+              <img src="./Resources/images/1movie-teriffier.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-2.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-4.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-5.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-6.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-7.jpg " alt="movie" />
+              <img src="./Resources/images/1movie-8.jpg " alt="movie" />
+              <img src="./Resources/images/1movie-9.jpg " alt="movie" />
+              <img src="./Resources/images/1movie-10 (2).jpg" alt="movie" />
+              <img src="./Resources/images/1movie-15.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-16.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-14.jpg" alt="movie" />
+              <img src="./Resources/images/1movie-17.jpg" alt="movie" />
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="product_slider ps_second">
-        <h2>Books To Read</h2>
-        <a href="./pages/books.php">
-          <div class="products">
-            <img src="./Resources/images/1book-15.jpg" alt="books" />
-            <img src="./Resources/images/1book-21.jpg" alt="books" />
-            <img src="./Resources/images/1book-26.jpg" alt="books" />
-            <img src="./Resources/images/1book2.jpg" alt="books" />
-            <img src="./Resources/images/1book5.jpg" alt="books" />
-            <img src="./Resources/images/1book6.jpg" alt="books" />
-            <img src="./Resources/images/1book7.jpg" alt="books" />
-            <img src="./Resources/images/1book8.jpg" alt="books" />
-            <img src="./Resources/images/1book9.jpg" alt="books" />
-            <img src="./Resources/images/1book10.jpg" alt="books" />
-            <img src="./Resources/images/1book11.jpg" alt="books" />
-            <img src="./Resources/images/1book13.jpg" alt="books" />
-            <img src="./Resources/images/1book-14.jpg" alt="books" />
-          </div>
-        </a>
+      
+      <div class="product_slider_wrapper">
+        <div class="product_slider ps_second">
+          <h2>Books To Read</h2><br>
+          <a href="./pages/books.php">
+            <div class="products">
+              <img src="./Resources/images/1book-15.jpg" alt="books" />
+              <img src="./Resources/images/1book-21.jpg" alt="books" />
+              <img src="./Resources/images/1book-26.jpg" alt="books" />
+              <img src="./Resources/images/1book2.jpg" alt="books" />
+              <img src="./Resources/images/1book5.jpg" alt="books" />
+              <img src="./Resources/images/1book6.jpg" alt="books" />
+              <img src="./Resources/images/1book7.jpg" alt="books" />
+              <img src="./Resources/images/1book8.jpg" alt="books" />
+              <img src="./Resources/images/1book9.jpg" alt="books" />
+              <img src="./Resources/images/1book10.jpg" alt="books" />
+              <img src="./Resources/images/1book11.jpg" alt="books" />
+              <img src="./Resources/images/1book13.jpg" alt="books" />
+              <img src="./Resources/images/1book-14.jpg" alt="books" />
+            </div>
+          </a>
+        </div>
       </div>
     </section>
     <!-- fourth main-section(product slider) ends -->

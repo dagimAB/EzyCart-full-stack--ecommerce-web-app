@@ -4,6 +4,7 @@
 
 // Initialize variables
 $first_name = $last_name = $phone = $email = $password = $confirm_password = $city = $dob = '';
+$is_admin = 0;
 $error_message = '';
 
 // Check if the form is submitted
@@ -44,9 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Insert the user into the database
-            $sql = "INSERT INTO users (first_name, last_name, phone, email, password, city, date_of_birth) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO users (first_name, last_name, phone, email, password, city, date_of_birth, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param('sssssss', $first_name, $last_name, $phone, $email, $hashed_password, $city, $dob);
+            $stmt->bind_param('sssssssi', $first_name, $last_name, $phone, $email, $hashed_password, $city, $dob, $is_admin);
 
             if ($stmt->execute()) {
                 // Redirect to the sign-in page after successful registration

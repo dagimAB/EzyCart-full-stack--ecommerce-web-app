@@ -365,3 +365,95 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+
+
+
+// //handle the search functionality
+function redirectToCategory() {
+  const select = document.getElementById("categorySelect");
+  const selectedOption = select.options[select.selectedIndex];
+  const redirectUrl = selectedOption.getAttribute("data-redirect");
+
+  if (redirectUrl) {
+    window.location.href = redirectUrl;
+    return false;
+  }
+  return true;
+}
+
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+  const select = document.getElementById("categorySelect");
+  const selectedOption = select.options[select.selectedIndex];
+  if (selectedOption.getAttribute("data-redirect")) {
+    e.preventDefault();
+  }
+});
+
+
+
+
+
+
+// // // Books and Movies slider
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to initialize slider
+  function initSlider(sliderWrapper) {
+    const slider = sliderWrapper.querySelector(".product_slider");
+    const products = slider.querySelector(".products");
+    const items = Array.from(products.querySelectorAll("img"));
+
+    // Calculate total width needed
+    const itemWidth =
+      items[0].offsetWidth +
+      parseInt(window.getComputedStyle(items[0]).marginRight);
+    const visibleItems = Math.ceil(products.offsetWidth / itemWidth);
+    const totalItems = items.length;
+
+    // Clone items to fill the visible space plus buffer
+    const clonesNeeded = Math.ceil((visibleItems * 2) / totalItems);
+    for (let i = 0; i < clonesNeeded; i++) {
+      items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        products.appendChild(clone);
+      });
+    }
+
+    let animationId;
+    let speed = 1; // Default speed
+    let position = 0;
+    const scrollSpeed = 1; // Base scroll speed
+    const totalWidth = itemWidth * (totalItems * (clonesNeeded + 1));
+
+    function animate() {
+      position -= speed;
+
+      // Reset position when we've scrolled one full set of items
+      if (position <= -itemWidth * totalItems) {
+        position = 0;
+      }
+
+      products.style.transform = `translateX(${position}px)`;
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Start animation
+    animate();
+
+    // Event listeners for hover
+    slider.addEventListener("mouseenter", () => {
+      speed = scrollSpeed * 0.3; // Slow down on hover
+    });
+
+    slider.addEventListener("mouseleave", () => {
+      speed = scrollSpeed; // Return to normal speed
+    });
+  }
+
+  // Initialize all sliders
+  const sliders = document.querySelectorAll(".product_slider_wrapper");
+  sliders.forEach((sliderWrapper) => {
+    initSlider(sliderWrapper);
+  });
+});

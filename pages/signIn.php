@@ -1,7 +1,7 @@
 <?php
-
-  // INCLUDE functions.php
-    include '../includes/functions.php';
+session_start();
+require_once '../includes/config.php';  // Added this line
+require_once '../includes/functions.php';
 
 // Initialize variables
 $email = $password = '';
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_message = "Please enter a valid email address!!.";
     } else {
         // Check if the user exists in the database
-        $sql = "SELECT id, password FROM users WHERE email = ?";
+        $sql = "SELECT id, password, is_admin FROM users WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -34,9 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Set session variables
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['email'] = $email;
+                $_SESSION['is_admin'] = (bool)$user['is_admin'];
 
-                // Redirect to the homepage or dashboard
-                header('Location: ../index.php');
+                // Debug output
+                error_log("User login - ID: {$user['id']}, Admin: {$user['is_admin']}");
+
+                // Redirect
+                if ($user['is_admin'] == 1) {
+                    header("Location: /EzyCart-PHP-orig/admin/dashboard.php");
+                } else {
+                    header("Location: /EzyCart-PHP-orig/index.php");
+                }
                 exit();
             } else {
                 $error_message = "Invalid email or password.";
@@ -44,8 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $error_message = "Invalid email or password.";
         }
-
-        // Close the statement
         $stmt->close();
     }
 }

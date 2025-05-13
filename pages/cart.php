@@ -91,48 +91,44 @@ foreach ($cart_items as $item) {
         </form>
 
 
-<!--TO BE REMOVED  -->
-        <!-- <div class="checkout">
-          <div class="total">0</div>
-        </div>
-    
-        <div class="clear_cart_button">
-          <button id="clearCart">Clear Cart</button>
-        </div> -->
-<!-- TO BE REMOVED -->
-
     </article>
 
+
     <div class="form">
-      <form action="#" method="#">
+      <form action="../api/place_order.php" method="POST">
         <div class="cart_form_div">
           <fieldset>
             <legend>Personal Details</legend>
+            <input type="hidden" name="csrf_token" value="<?= generateCSRFToken() ?>">
+            
             <label for="fname">First Name:</label><br />
-            <input type="text" /><br />
+            <input type="text" name="first_name" required /><br />
+            
             <label for="lname">Last Name:</label><br />
-            <input type="text" /><br />
-            <label for="pnumber">Phone Number:</label><br />
-            <input type="tel" /><br />
-            <label for="pnumber">Email:</label><br />
-            <input type="email" /><br />
-            <label for="pnumber">City:</label><br />
-            <input type="text" />
+            <input type="text" name="last_name" required /><br />
+            
+            <label for="phone">Phone Number:</label><br />
+            <input type="tel" name="phone" required /><br />
+            
+            <label for="email">Email:</label><br />
+            <input type="email" name="email" required /><br />
+            
+            <label for="city">City:</label><br />
+            <input type="text" name="city" required />
             <br>
+            
             <label for="pmethod">Payment Method:</label> 
             <span>TeleBirr</span>
-            <input name="pm" type="radio" />
+            <input name="payment_method" type="radio" value="TeleBirr" required />
             <span>M-PESA</span>
-            <input name="pm" type="radio" />
+            <input name="payment_method" type="radio" value="M-PESA" />
             <span>Bank</span>
-            <input name="pm" type="radio" />
+            <input name="payment_method" type="radio" value="Bank" />
             
-            <br />
-            <br>
+            <br /><br />
 
             <div class="reset_submit">
-              <button class="submit" type="submit">Submit</button>
-
+              <button class="submit" type="submit">Place Order</button>
               <button class="reset" type="reset">Reset</button>
             </div>
           </fieldset>

@@ -444,7 +444,7 @@ img {
 .remove_cart{
   padding: 8px;
   border-radius: 10px;
-  background-color: rgb(136, 27, 27);
+  background-color: rgb(219, 27, 27);
 }
 
 .clear_cart_button {
@@ -454,7 +454,7 @@ img {
 }
 
 .clear_cart_button button {
-  background-color: rgb(136, 27, 27);
+  background-color: rgb(219, 27, 27);
   width: 80px;
   height: 40px;
   border-radius: 10px;
@@ -462,7 +462,7 @@ img {
 }
 
 .clear_cart_button button:hover, .remove_cart:hover{
-  background-color: rgb(219, 27, 27);
+  background-color: rgb(136, 27, 27);
 }
 
 

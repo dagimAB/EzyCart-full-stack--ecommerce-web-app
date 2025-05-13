@@ -1,0 +1,133 @@
+/* admin style starts */
+
+/* admin.css */
+.admin-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.admin-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0066c0;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.action-btn {
+    background: #0066c0;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    width: 30%;
+    text-align: center;
+}
+
+.action-btn:hover {
+    background: #0056a3;
+}
+
+/* Admin navigation */
+.admin-nav {
+    background: #232f3e;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.admin-nav a:hover {
+    background: #37475a;
+}
+
+
+
+
+
+
+
+
+
+/* users style starts */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table th {
+    background-color: #f8f9fa;
+}
+
+.user_btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #0066c0;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+/* users style ends */
+
+
+/* admin style ends */

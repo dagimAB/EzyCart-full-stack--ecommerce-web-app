@@ -1,0 +1,163 @@
+/* orders.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Admin navigation */
+.admin-nav {
+    background: #232f3e;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.admin-nav a:hover {
+    background: #37475a;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.order-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.order-filters select,
+.order-filters input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.order-table th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.order-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.status-form {
+    display: flex;
+    gap: 5px;
+}
+
+.status-select {
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-update {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-update:hover {
+    background-color: #2980b9;
+}
+
+.btn-view {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-view:hover {
+    background-color: #27ae60;
+}
+
+.alert {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+/* Status colors */
+.status-select option[value="Pending"] {
+    background-color: #f39c12;
+    color: white;
+}
+
+.status-select option[value="Shipped"] {
+    background-color: #3498db;
+    color: white;
+}
+
+.status-select option[value="Delivered"] {
+    background-color: #2ecc71;
+    color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .order-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .status-form {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

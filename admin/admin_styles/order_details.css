@@ -1,0 +1,184 @@
+/* orders.css - Order Details Page */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Admin navigation */
+.admin-nav {
+    background: #232f3e;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.admin-nav a:hover {
+    background: #37475a;
+}
+
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eaecef;
+}
+
+.order-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.customer-info, 
+.order-summary {
+    flex: 1;
+    min-width: 300px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    color: #3498db;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.order-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.order-items th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.order-items td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-items tr:hover {
+    background-color: #f5f5f5;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+.no-image {
+    width: 60px;
+    height: 60px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.order-total {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+    padding-top: 10px;
+    border-top: 2px solid #eaecef;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-back {
+    background-color: #95a5a6;
+}
+
+.btn-back:hover {
+    background-color: #7f8c8d;
+}
+
+/* Status Badges */
+.status-pending {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.status-shipped {
+    color: #3498db;
+    font-weight: 600;
+}
+
+.status-delivered {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .order-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .order-items {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .order-items td {
+        min-width: 120px;
+    }
+}

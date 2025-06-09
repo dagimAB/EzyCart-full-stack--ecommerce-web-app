@@ -127,10 +127,6 @@ if (!function_exists('getUserById')) {
 
 
 
-
-
-// //Add this to your functions.php
-
 if (!function_exists('getCategoryName')) {
     function getCategoryName($category_id) {
         global $conn;

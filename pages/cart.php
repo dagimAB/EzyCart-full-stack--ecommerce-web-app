@@ -94,6 +94,7 @@ foreach ($cart_items as $item) {
     </article>
 
 
+
     <div class="form">
       <form action="../api/place_order.php" method="POST">
         <div class="cart_form_div">

@@ -1,11 +1,24 @@
 <?php
 // config.php
 
-// Database configuration
-define('DB_HOST', 'localhost'); // Database host
-define('DB_USER', 'root');      // Database username
-define('DB_PASS', '');          // Database password
-define('DB_NAME', 'ezycart');   // Database name
+// Path to our .env file
+$envPath = __DIR__ . '/.env';
+
+// Parse .env file if it exists
+if (file_exists($envPath)) {
+    $envVars = parse_ini_file($envPath);
+    foreach ($envVars as $key => $value) {
+        putenv("$key=$value");
+        $_ENV[$key] = $value;
+    }
+}
+
+// Database configuration using getenv() with fallback values
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_NAME', getenv('DB_NAME') ?: 'ezycart');
+
 
 // Create a database connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

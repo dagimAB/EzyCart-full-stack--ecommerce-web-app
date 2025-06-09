@@ -30,6 +30,7 @@ $user = $stmt->get_result()->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Resources/icons-and-logo/E-logo-correct.webp" type="image/x-icon">
     <link rel="stylesheet" href="./admin_styles/edit_users.css">
     <title>edit-user</title>
 </head>

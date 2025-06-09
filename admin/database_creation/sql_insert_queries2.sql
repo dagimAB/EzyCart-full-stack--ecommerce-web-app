@@ -1,6 +1,21 @@
 
 -- 
 -- 
+                        for categories TABLE
+
+INSERT INTO categories (name, description, image_url) VALUES
+('Electronics', 'Explore the latest electronics and gadgets.', 'image_url'),
+('Men Clothing', 'Discover trendy and comfortable clothing for men.', './Resources/images/electronics.avif'),
+('Women Clothing', 'Find stylish and elegant outfits for women.', './Resources/images/mensClothing.avif'),
+('Jewelry', 'Shop for exquisite jewelry to complement your style.', './Resources/images/jewelery.avif'),
+('Cars', 'Explore the latest models and futuristic car designs.', './Resources/images/futuristic-car.avif'),
+('Kitchen Products', 'Upgrade your kitchen with modern and efficient products.', './Resources/images/kitchenProduct.jpg'),
+('Beauty Salon Products', 'Pamper yourself with premium beauty and salon products.', './Resources/images/beauty-product.avif'),
+('Toy Items', 'Find fun and educational toys for all ages.', './Resources/images/toy-items.avif'),
+('Movies', 'Watch movies, Watch more!!', './Resources/images/movie1.jpg'),  
+('Books', 'Read books, Know universe!!', './Resources/images/book1.jpg');  
+
+
                  for home_page_products TABLE
 
 INSERT INTO home_page_products (id, name, image_url, description, price) VALUES
@@ -305,7 +320,51 @@ VALUES
 -- 
 
 
+ID = 9
+
+-- 
+INSERT INTO products (name, description, price, category_id, image_url, stock_quantity, created_at, is_active) VALUES
+('Dune', NULL, 5.00, 9, './Resources/images/1movie-10 (2.jpg)', 1, '2025-03-16 23:20:01', 1),
+('Terrifier 3', NULL, 4.00, 9, './Resources/images/1movie-terfifier.jpg', 0, '2025-03-16', 1),
+('DeadPool Vs Wolverine', NULL, 7.00, 9, './Resources/images/1movie-15.jpg', 0, '2025-03-16', 1),
+('Sions', NULL, 3.00, 9, './Resources/images/1movie-16.jpg', 1, '2025-03-16', 1),
+('Dog Man', NULL, 6.00, 9, './Resources/images/1movie-5.jpg', 1, '2025-03-16 23:20:01', 1),
+('The Wild Robot', NULL, 8.00, 9, './Resources/images/1movie-6.jpg', 1, '2025-03-16 23:20:01', 1),
+('Twisters', NULL, 7.00, 9, './Resources/images/1movie-8.jpg', 1, '2025-03-16 23:20:01', 1),
+('Allen', NULL, 4.00, 9, './Resources/images/1movie-17.jpg', 1, '2025-03-16 23:20:01', 1),
+('Terminator', NULL, 8.00, 9, './Resources/images/1movie-2.jpg', 1, '2025-03-16 23:20:01', 1),
+('Godzilla Minus One', NULL, 7.00, 9, './Resources/images/1movie-3.jpg', 1, '2025-03-16 23:20:01', 1),
+('The Lord Of The Rings', NULL, 6.00, 9, './Resources/images/1movie-4.jpg', 1, '2025-03-16 23:20:01', 1),
+('The Witches', NULL, 3.00, 9, './Resources/images/1movie-9.jpg', 1, '2025-03-16 23:20:01', 1);
 
 
 
+
+
+-- 
+-- 
+-- 
+
+
+
+
+
+ID = 10
+
+-- 
+-- 
+
+
+INSERT INTO products (name, description, price, category_id, image_url, stock_quantity, created_at, is_active) VALUES
+('Dad', NULL, 4.00, 10, './Resources/images/1book3.jpg', 1, '2025-03-16', 1),
+('Rele Van Tes', NULL, 7.00, 10, './Resources/images/1book4.jpg', 1, '2025-03-16', 1),
+('Receta Legal', NULL, 3.00, 10, './Resources/images/1book5.jpg', 1, '2025-03-16', 1),
+('Grand Santi', NULL, 6.00, 10, './Resources/images/1book8.jpg', 1, '2025-03-16', 1),
+('War', NULL, 8.00, 10, './Resources/images/1book9.jpg', 1, '2025-03-16', 1),
+('The Blue Hour', NULL, 7.00, 10, './Resources/images/1book10.jpg', 1, '2025-03-16', 1),
+('Good Energy', NULL, 4.00, 10, './Resources/images/1book11.jpg', 1, '2025-03-16', 1),
+('The 8th Habit', NULL, 8.00, 10, './Resources/images/1book-14.jpg', 1, '2025-03-16', 1),
+('Atomic Habit', NULL, 7.00, 10, './Resources/images/1book-15.jpg', 1, '2025-03-16', 1),
+('Lessons Learned', NULL, 6.00, 10, './Resources/images/1book-17.jpg', 1, '2025-03-16', 1),
+('Mom', NULL, 3.00, 10, './Resources/images/1book-19.jpg', 1, '2025-03-16', 1);
 

@@ -13,6 +13,7 @@ require_once('../includes/functions.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Resources/icons-and-logo/E-logo-correct.webp" type="image/x-icon">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="./admin_styles/dashboard.css">
     <link rel="stylesheet" href="../style/styles.css">

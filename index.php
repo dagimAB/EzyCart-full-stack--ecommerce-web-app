@@ -62,90 +62,90 @@
     <title>EzyCart</title>
   </head>
   <body>
-<!-- Header section starts -->
-    <header>
-        <nav class="header_container">
-            <div class="logo_container">
-                <a href="./index.php">
-                    <img src="./Resources/icons-and-logo/EzyCart-originall-logo.jpg" alt="EzyCart logo" />
-                </a>
-            </div>
-            <div class="search">
-                <form id="searchForm" action="./pages/searchResults.php" method="GET">
-                    <select name="category" id="categorySelect" onchange="redirectToCategory()">
-                        <option value="0">All</option>
-                        <?php
-                        // Fetch categories from database
-                        $sql = "SELECT id, name FROM categories";
-                        $result = $conn->query($sql);
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option value='{$row['id']}' data-category-id='{$row['id']}'>{$row['name']}</option>";
-                        }
-                        ?>
-                    </select>
-                    <!-- <input type="hidden" id="selectedCategoryId" name="category_id" value=""> -->
-                    <input type="text" name="query" placeholder="Search products..." />
-                    <button type="submit"><img src="./Resources/icons-and-logo/searchIcon.png" alt="search icon"></button>
-                </form>
-            </div>
-            <div class="order_container">
-                <div class="delivery">
-                    <span>
-                        <img class="location" src="./Resources/icons-and-logo/locationIcon.png" alt="location icon" />
-                    </span>
-                    <div>
-                        <p>Deliver to</p>
-                        <span>Ethiopia</span>
-                    </div>
-                </div>
-                <?php if (isset($_SESSION['user_id'])): ?>
-                    <!-- Show logout link if user is logged in -->
-                    <?php if (isAdmin()): ?>
-                        <a href="./admin/dashboard.php">
-                            <div>
-                                <h4>Admin</h4>
-                            </div>
-                        </a>
-                    <?php endif; ?>
-                    <a href="./pages/logout.php">
-                        <div>
-                            <h4>Logout</h4>
-                        </div>
-                    </a>
-                <?php else: ?>
-                    <!-- Show sign-in and sign-up links if user is not logged in -->
-                    <a href="./pages/signIn.php">
-                        <div>
-                            <h4>Sign In</h4>
-                        </div>
-                    </a>
-                    <a href="./pages/signUp.php">
-                        <div>
-                            <h4>Sign Up</h4>
-                        </div>
-                    </a>
-                <?php endif; ?>
-                <a href="./pages/cart.php">
-                    <div class="count_cart">
-                        <span class="count"><?php echo $cart_count; ?></span>
-                        <img class="cart" src="./Resources/icons-and-logo/cart-icon-svg111.svg" alt="cart icon" />
-                    </div>
-                </a>
-            </div>
-            <div class="header_drop_down">
-                <img src="./Resources/icons-and-logo/menu.png" alt="menu icon">
-            </div>
-            <div class="hidden-content">
-                <?php if(isset($_SESSION['user_id'])): ?>
-                <a href="./pages/logout.php">Log Out</a>
-                <?php else: ?>
-                <a href="./pages/signIn.php">Sign In</a>
-                <a href="./pages/signUp.php">Sign Up</a>
-                <?php endif; ?>
-            </div>
-        </nav>
-    </header>
-<!-- Header section ends -->
+  <!-- Header section starts -->
+      <header>
+          <nav class="header_container">
+              <div class="logo_container">
+                  <a href="./index.php">
+                      <img src="./Resources/icons-and-logo/EzyCart-originall-logo.jpg" alt="EzyCart logo" />
+                  </a>
+              </div>
+              <div class="search">
+                  <form id="searchForm" action="./pages/searchResults.php" method="GET">
+                      <select name="category" id="categorySelect" onchange="redirectToCategory()">
+                          <option value="0">All</option>
+                          <?php
+                          // Fetch categories from database
+                          $sql = "SELECT id, name FROM categories";
+                          $result = $conn->query($sql);
+                          while ($row = $result->fetch_assoc()) {
+                              echo "<option value='{$row['id']}' data-category-id='{$row['id']}'>{$row['name']}</option>";
+                          }
+                          ?>
+                      </select>
+                      <!-- <input type="hidden" id="selectedCategoryId" name="category_id" value=""> -->
+                      <input type="text" name="query" placeholder="Search products..." />
+                      <button type="submit"><img src="./Resources/icons-and-logo/searchIcon.png" alt="search icon"></button>
+                  </form>
+              </div>
+              <div class="order_container">
+                  <div class="delivery">
+                      <span>
+                          <img class="location" src="./Resources/icons-and-logo/locationIcon.png" alt="location icon" />
+                      </span>
+                      <div>
+                          <p>Deliver to</p>
+                          <span>Ethiopia</span>
+                      </div>
+                  </div>
+                  <?php if (isset($_SESSION['user_id'])): ?>
+                      <!-- Show logout link if user is logged in -->
+                      <?php if (isAdmin()): ?>
+                          <a href="./admin/dashboard.php">
+                              <div>
+                                  <h4>Admin</h4>
+                              </div>
+                          </a>
+                      <?php endif; ?>
+                      <a href="./pages/logout.php">
+                          <div>
+                              <h4>Logout</h4>
+                          </div>
+                      </a>
+                  <?php else: ?>
+                      <!-- Show sign-in and sign-up links if user is not logged in -->
+                      <a href="./pages/signIn.php">
+                          <div>
+                              <h4>Sign In</h4>
+                          </div>
+                      </a>
+                      <a href="./pages/signUp.php">
+                          <div>
+                              <h4>Sign Up</h4>
+                          </div>
+                      </a>
+                  <?php endif; ?>
+                  <a href="./pages/cart.php">
+                      <div class="count_cart">
+                          <span class="count"><?php echo $cart_count; ?></span>
+                          <img class="cart" src="./Resources/icons-and-logo/cart-icon-svg111.svg" alt="cart icon" />
+                      </div>
+                  </a>
+              </div>
+              <div class="header_drop_down">
+                  <img src="./Resources/icons-and-logo/menu.png" alt="menu icon">
+              </div>
+              <div class="hidden-content">
+                  <?php if(isset($_SESSION['user_id'])): ?>
+                  <a href="./pages/logout.php">Log Out</a>
+                  <?php else: ?>
+                  <a href="./pages/signIn.php">Sign In</a>
+                  <a href="./pages/signUp.php">Sign Up</a>
+                  <?php endif; ?>
+              </div>
+          </nav>
+      </header>
+  <!-- Header section ends -->
 
     <!-- first main section(image slider) starts -->
     <section>

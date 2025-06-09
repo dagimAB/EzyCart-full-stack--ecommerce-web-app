@@ -40,6 +40,7 @@ $categories = $conn->query("SELECT * FROM categories");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Resources/icons-and-logo/E-logo-correct.webp" type="image/x-icon">
     <title>Add New Product</title>
     <link rel="stylesheet" href="./admin_styles/add_products.css">
 </head>

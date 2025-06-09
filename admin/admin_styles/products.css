@@ -209,3 +209,98 @@ body {
     }
 }
 
+
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+.pagination a, .pagination span {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+}
+.pagination a:hover {
+    background-color: #f5f5f5;
+}
+.pagination .current {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+.pagination .disabled {
+    color: #ccc;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+
+/* /// edit_product.php styles */
+.product-form {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.status-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    background: #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.toggle-label:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s;
+}
+
+input[type="checkbox"]:checked + .toggle-label {
+    background: #4CAF50;
+}
+
+input[type="checkbox"]:checked + .toggle-label:after {
+    left: calc(100% - 22px);
+}
+
+.current-image img {
+    border: 2px solid #ddd;
+    padding: 5px;
+    margin-top: 10px;
+}

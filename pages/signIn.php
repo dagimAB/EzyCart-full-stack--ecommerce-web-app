@@ -9,7 +9,7 @@ $error_message = '';
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
+
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 

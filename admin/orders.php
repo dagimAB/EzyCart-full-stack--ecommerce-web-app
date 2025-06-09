@@ -30,6 +30,7 @@ $orders = $result->fetch_all(MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../Resources/icons-and-logo/E-logo-correct.webp" type="image/x-icon">
     <title>Manage Orders</title>
     <link rel="stylesheet" href="./admin_styles/orders.css">
 </head>

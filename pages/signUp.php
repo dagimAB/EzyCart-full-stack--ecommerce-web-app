@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm_password = trim($_POST['confirmPassword']);
     $city = trim($_POST['city']);
     $dob = trim($_POST['dob']);
+    
 
     // Validate form data
     if (empty($first_name) || empty($last_name) || empty($phone) || empty($email) || empty($password) || empty($confirm_password) || empty($city) || empty($dob)) {

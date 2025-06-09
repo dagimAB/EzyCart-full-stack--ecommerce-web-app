@@ -104,5 +104,16 @@ CREATE TABLE home_page_products(
 );
 
 
+
+CREATE TABLE admin_logs (
+    user_id INT ,
+    action VARCHAR(255) ,
+    ip_address VARCHAR(255) ,
+    user_agent VARCHAR(20) ,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
 -- DATABASE TABLES ER-DIAGRAM
 -- https://lucid.app/lucidchart/b7cb4b21-e8d7-4cbb-930b-300095add4cd/edit?beaconFlowId=8B933C04CDD21C96&invitationId=inv_afef29c7-dac3-4ea4-b695-76e7c2cf2fe5&page=0_0#
